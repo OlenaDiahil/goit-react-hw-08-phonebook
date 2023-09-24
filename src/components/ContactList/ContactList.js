@@ -1,14 +1,13 @@
-import { useSelector, useDispatch } from 'react-redux';
+import { useSelector} from 'react-redux';
 import Loader from 'components/Loader/Loader';
-import { deleteContact } from 'redux/operations';
-import { selectContacts } from 'redux/contactSlice';
-import { selectFilterContacts } from 'redux/selectors';
+import { useDeleteContactMutation, useGetContactsQuery } from 'redux/contactsApi';
+import { ContactListContainer } from './ContactList.Styled';
 
 export const ContactList = () => {
-  const dispatch = useDispatch();
-  const { items, isLoading, error } = useSelector(selectContacts);
-  const { filter } = useSelector(selectFilterContacts);
-  const handleDelete = id => dispatch(deleteContact(id));
+  const token = useSelector(state => state.auth.token);
+  const { data: contacts, isLoading, error } = useGetContactsQuery(token);
+  const { filter } = useSelector(state => state.filter);
+  const [deleteContact] = useDeleteContactMutation();
 
   if (isLoading && !error) {
     return (
@@ -26,31 +25,29 @@ export const ContactList = () => {
     );
   }
 
-  let arrayContacts = [];
-  if (filter === '') {
-    arrayContacts = items;
-  } else {
-    const normalizedFilter = filter.toLocaleLowerCase();
-    arrayContacts = items.filter(contact =>
-      contact.name.toLocaleLowerCase().includes(normalizedFilter)
+  const getFilteredContacts = () => {
+    return (contacts || []).filter(contact =>
+      contact.name.toLowerCase().includes(filter)
     );
-  }
+  };
+
+  const filteredContacts = getFilteredContacts();
 
   return (
-    <div>
+    <ContactListContainer>
       <ul>
-        {arrayContacts.map(({ id, name, number }) => (
+        {filteredContacts.map(({ id, name, number }) => (
           <li key={id}>
              {name}: {number}
             <button
               type="button"
-              onClick={() => handleDelete(id)}
+              onClick={() => deleteContact(id)}
             >
               Delete
             </button>
           </li>
         ))}
       </ul>
-    </div>
+    </ContactListContainer>
   );
 };

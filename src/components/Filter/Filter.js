@@ -1,5 +1,6 @@
 import { useDispatch } from 'react-redux';
 import {filterChanges } from 'redux/filterSlice';
+import { FilterContainer } from './Filter.Styled';
 
 export const Filter = ({ searchInputId }) => {
   const dispatch = useDispatch();
@@ -9,7 +10,7 @@ export const Filter = ({ searchInputId }) => {
   };
 
   return (
-    <div>
+    <FilterContainer>
       <label htmlFor={searchInputId}>Find contacts by name</label>
       <input
         type="text"
@@ -17,6 +18,6 @@ export const Filter = ({ searchInputId }) => {
         onChange={changeFilter}
         id={searchInputId}
       />
-    </div>
+    </FilterContainer>
   );
 };
