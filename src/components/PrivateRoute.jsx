@@ -6,7 +6,7 @@ function PrivateRoute({ redirectTo }) {
   const { token } = useSelector((state) => state.auth);
   console.log(token)
 
-  return token ? <Outlet /> : <Navigate to={redirectTo}/>;
+  return token ? (<Outlet />) : (<Navigate to={redirectTo}/>);
 };
 
 export default PrivateRoute;

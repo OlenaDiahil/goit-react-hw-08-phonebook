@@ -15,13 +15,6 @@ export const PageContainer = styled.div`
     position: relative; 
 `;
 
-export const Header = styled.header`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 100%;
-`;
-
 export const Title = styled.h1`
   font-size: 36px;
   color: transparent;
@@ -32,7 +25,7 @@ export const Title = styled.h1`
   white-space: nowrap;
 `;
 
-export const LoadingText = styled.h1`
+export const LoadingText = styled.p`
     font-size: 24px;
     color: ${blackColor};
 `;

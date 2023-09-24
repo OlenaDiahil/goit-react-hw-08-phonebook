@@ -19,7 +19,6 @@ import authApi from './auth';
 const persistConfig = {
   key: 'root',
   storage,
-  blacklist: ['contactsApi', 'authApi'],
 };
 
 const rootReduser = combineReducers({
