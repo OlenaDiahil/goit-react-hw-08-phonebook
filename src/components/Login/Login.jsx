@@ -30,7 +30,7 @@ const Login = () => {
     if (data) {
       console.log(data.token)
       dispatch(setToken(data.token));
-      navigate("/contacts");
+      navigate("/");
     }
 
     reset();

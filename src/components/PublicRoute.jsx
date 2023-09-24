@@ -2,7 +2,7 @@ import React, { Suspense } from 'react';
 import { useSelector } from 'react-redux';
 import { Navigate, Outlet } from 'react-router-dom';
 
-function PublicRoute({redirectTo="/contacts"}) {
+function PublicRoute({redirectTo="/"}) {
     const { token } = useSelector((state) => state.auth);
     const shouldRedirect = token;
     return shouldRedirect ? (

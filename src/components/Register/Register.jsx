@@ -38,7 +38,7 @@ export default function Register() {
         });
         console.log(data.token)
         dispatch(setToken(data.token));
-        navigate("/contacts");
+        navigate("/");
       }
     }
     reset();
