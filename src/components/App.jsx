@@ -20,7 +20,7 @@ export const App = () => {
         </Route>
         <Route element={<PrivateRoute redirectTo="/login" />}>
           <Route path="/" element={<Layout />}>
-            <Route path='contacts' element={<ContactsPage />} />
+            <Route index element={<ContactsPage />} />
           </Route>
         </Route>
         <Route path='*' element={<NotFoundPage/>} />
