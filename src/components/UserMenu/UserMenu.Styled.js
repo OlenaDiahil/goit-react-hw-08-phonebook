@@ -15,8 +15,8 @@ export const WelcomeContainer = styled.div`
     margin: 20px;
     span {
         color: transparent;
-        font-size: 20px; /* Збільште розмір тексту */
-        font-weight: bold; /* Зробіть текст жирним */
+        font-size: 20px; 
+        font-weight: bold; 
         background: linear-gradient(90deg, ${primaryColor}, ${secondaryColor});
         -webkit-background-clip: text;
         background-clip: text;
