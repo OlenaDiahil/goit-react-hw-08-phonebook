@@ -2,9 +2,9 @@ import React, { Suspense } from 'react';
 import { useSelector } from 'react-redux';
 import { Navigate, Outlet } from 'react-router-dom';
 
-function PublicRoute({redirectTo="/contacts", resticted='false'}) {
+function PublicRoute({redirectTo="/contacts"}) {
     const { token } = useSelector((state) => state.auth);
-    const shouldRedirect = token && resticted;
+    const shouldRedirect = token;
     return shouldRedirect ? (
         <Navigate to={redirectTo} />
     ) : (
